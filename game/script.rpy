@@ -110,7 +110,7 @@ image bg xebclass = "images/backgrounds/xeb/class.jpg"
 image bg xebcorridor = "images/backgrounds/xeb/corridor.jpg"
 image bg xebdock = "images/backgrounds/xeb/dock.jpg"
 image bg xebdorm = "images/backgrounds/xeb/dorm.jpg"
-image bg xebcdorm_door = "images/backgrounds/xeb/dorm_door.jpg"
+image bg xebdorm_door = "images/backgrounds/xeb/dorm_door.jpg"
 image bg xebdorm_room = "images/backgrounds/xeb/dorm_room.jpg"
 image bg xebgarden = "images/backgrounds/xeb/garden.jpg"
 image bg xebgate = "images/backgrounds/xeb/gate.jpg"
@@ -123,6 +123,10 @@ image bg xebroof = "images/backgrounds/xeb/roof.jpg"
 image bg xebtrack = "images/backgrounds/xeb/track.jpg"
 image bg xebshower = "images/backgrounds/xeb/shower.jpg"
 image bg xebstreet = "images/backgrounds/xeb/street.jpg"
+image bg xebstreet2 = "images/backgrounds/xeb/street2.jpg"
+image bg xebstreet3 = "images/backgrounds/xeb/street3.jpg"
+image bg xebstreet4 = "images/backgrounds/xeb/street4.jpg"
+image bg xebstreet5 = "images/backgrounds/xeb/street5.jpg"
 image bg xebriver = "images/backgrounds/xeb/underground_river.jpg"
 image bg xebfin = "images/backgrounds/xeb/fin.jpg"
 image bg xebcult3 = "images/backgrounds/xeb/cult3.jpg"
@@ -130,6 +134,9 @@ image bg xebcult5 = "images/backgrounds/xeb/cult5.jpg"
 image bg xebcompound = "images/backgrounds/xeb/liberia_village2.jpg"
 image bg xebhospital = "images/backgrounds/xeb/hospital.jpg"
 image bg xebpop = "images/backgrounds/xeb/pop.jpg"
+image bg xebdesk = "images/backgrounds/xeb/desk.jpg"
+image bg xeblockers = "images/backgrounds/xeb/lockers.jpg"
+image bg xebstairs = "images/backgrounds/xeb/stairs.jpg"
 
 image ebby wink = "images/sprites/EbbyWink.png"
 image ebby concerned= "images/sprites/EbbyConcerned.png"
@@ -138,6 +145,12 @@ image ebby sad= "images/sprites/EbbySad.png"
 image ebby rape= "images/sprites/EbbyRape.png"
 image ebby joy= "images/sprites/EbbyJoy.png"
 image ebby normal = "images/sprites/EbbyNormal.png"
+image ebby toastdead = "images/sprites/EbbyToastDead.png"
+image ebby toastsad = "images/sprites/EbbyToastSad.png"
+image ebby toastjoy = "images/sprites/EbbyToastJoy.png"
+
+image mal = Placeholder("girl")
+image bp = Placeholder("girl")
 
 image aids concerned = "images/sprites/AIDS/AidsConcerned.png"
 image aids excited = "images/sprites/AIDS/AidsExcited.png"
@@ -158,6 +171,16 @@ image joki wtf = "images/sprites/JOKI/JokiWTF.png"
 image sars concerned = "images/sprites/SARS/SarsConcerned.png"
 image sars grin = "images/sprites/SARS/SarsGrin.png"
 image sars sad = "images/sprites/SARS/SarsSad.png"
+image sars notamused = "images/sprites/SARS/SarsNotAmused.png"
+image sars stars = "images/sprites/SARS/SarsStars.png"
+
+image rab happy = "images/sprites/RABIES/RabHappy.png"
+image rab normal = "images/sprites/RABIES/RabNormal.png"
+image rab sad = "images/sprites/RABIES/RabSad.png"
+image rab shock = "images/sprites/RABIES/RabShock.png"
+image rab unsure = "images/sprites/RABIES/RabUnsure.png"
+image rab violent = "images/sprites/RABIES/RabViolent.png"
+image rab annoyed = "images/sprites/RABIES/RabAnnoyed.png"
 
 image vu normal = "images/sprites/VuNormal.png"
 
@@ -165,6 +188,14 @@ image ctc = anim.Filmstrip("images/ec_c2cstrip.png", (79,40), (8,1), 0.1, xpos=1
 
 define ec = Character(name='Ebola-chan', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
 define vc = Character(name='Vu-chan', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
+define sars = Character(name='Sars-chan', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
+define joki = Character(name='Joki-kun', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
+define eidzu = Character(name='Eidzu-chan', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
+define mal = Character(name='Malaria-chan', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
+define rab = Character(name='Rabies-chan', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
+define bp = Character(name='BP-sama', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
+define teach = Character(name='Teacher', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
+
 define narrator = Character(name=' ', what_color="#fdb2b6", who_color="#000000", what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
 define nn = Character(name=' ', what_color="#dddddd", who_color="#000000", what_prefix='', what_suffix='', ctc="ctc", ctc_position="fixed", ctc_pause="ctc", ctc_timedpause=Null())
 define centered = Character(name=' ', what_style="centered_text", window_style="centered_window")
@@ -184,9 +215,10 @@ label start:
             jump Xebstuff
         "Rydeas":
             jump rydeas
+        "Linder":
+            jump linderstuff
         "Ebola Rat":
             jump EbolaRat
         "Alike API Test":
             jump alike
-
     return
