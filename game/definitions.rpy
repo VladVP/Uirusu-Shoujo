@@ -146,10 +146,11 @@ init:
     # CHARACTER IMAGES
     #==============================================================
     
+init -13:
     if persistent.artstyle is None:
         $ persistent.artstyle = 'default'
     
-init python:
+init -13 python:
     # Used for declaring images that switch artstyles.
     # Takes a list of image names.
     def artstyle_switcher(list=[], bases=[]):
@@ -161,13 +162,24 @@ init python:
         if base:
             base = " "+base
         for item in list:
-            renpy.image(item+base, ConditionSwitch(
-                "renpy.image_exists(persistent.artstyle+' "+item+base+"')",DynamicDisplayable(artstyle_dynamic,item=item,base=base),
-                "renpy.image_exists('default "+item+base+"')", "default "+item+base,
-                "True",Placeholder('girl')
-            ))
-    def artstyle_dynamic(st, at, item, base):
-        return persistent.artstyle+" "+item+base, None
+            artstyle_switcher3(item+base)
+    def artstyle_switcher3(name):
+        #cropped
+        renpy.image(name, DynamicDisplayable(artstyle_dynamic,name=name))
+        #full image
+        renpy.image(name+" full", DynamicDisplayable(artstyle_dynamic,name=name+" full"))
+        #large cropped
+        renpy.image(name+" large", DynamicDisplayable(artstyle_dynamic,name=name+" large"))
+        #large full
+        renpy.image(name+" large full", DynamicDisplayable(artstyle_dynamic,name=name+" large full"))
+        return
+    def artstyle_dynamic(st, at, name=''):
+        if renpy.image_exists(persistent.artstyle+" "+name):
+            return persistent.artstyle+" "+name, None
+        elif renpy.image_exists("default "+name):
+            return "default "+name, None
+        else:
+            return Placeholder('girl'), None
             
     # Used for compositing and declaring many images with little effort.
     # For each item, defines 4 images. Cropped small, cropped large, full small, and full large.
@@ -223,51 +235,6 @@ init python:
     }, wimg=477, himg=900, 
     lcrop=900, scrop=900,
     lscale=1.0, sscale=1.0)
-#Ebby dread normal
-    autoComposite('dread ebby normal', base="images/sprites/dread/EBOLA/EbbyNormal.png",
-    bases={
-    'blood':"images/sprites/dread/EBOLA/EbbyBlood.png",
-    'skull':"images/sprites/dread/EBOLA/EbbySkull.png",
-    'bloodskull':"images/sprites/dread/EBOLA/EbbySkullBlood.png",
-    },
-    dict={
-    'dread ebby wink':"images/sprites/dread/EBOLA/EbbyWink.png",
-    'dread ebby concerned':"images/sprites/dread/EBOLA/EbbyConcerned.png",
-    'dread ebby excited':"images/sprites/dread/EBOLA/EbbyExcited.png",
-    'dread ebby sad':"images/sprites/dread/EBOLA/EbbySad.png",
-    'dread ebby rape':"images/sprites/dread/EBOLA/EbbyRape.png",
-    'dread ebby joy':"images/sprites/dread/EBOLA/EbbyJoy.png",
-    }, wimg=808, himg=1929, 
-    xcomp=297, ycomp=188, wcomp=259, hcomp=268,
-    lcrop=1060, scrop=1350)
-#Ebby dread toast
-    autoComposite(base="images/sprites/EBOLA/EbbyNormal.png",
-    bases={
-    'blood':"images/sprites/EBOLA/EbbyBlood.png",
-    'skull':"images/sprites/EBOLA/EbbySkull.png",
-    'bloodskull':"images/sprites/EBOLA/EbbySkullBlood.png",
-    },
-    dict={
-    'dread ebby toastdead':"images/sprites/dread/EBOLA/EbbyToastDead.png",
-    'dread ebby toastsad':"images/sprites/dread/EBOLA/EbbyToastSad.png",
-    'dread ebby toastjoy':"images/sprites/dread/EBOLA/EbbyToastJoy.png",
-    }, wimg=808, himg=1929, 
-    xcomp=297, ycomp=188, wcomp=259, hcomp=334,
-    lcrop=1060, scrop=1350)
-#Ebby poneh
-    autoComposite(
-    bases={'blood':"",'skull':"",'bloodskull':"",},
-    dict={
-    'poneh ebby normal':"images/sprites/poneh/EBOLA/EbbyNormal.png",
-    'poneh ebby wink':"images/sprites/poneh/EBOLA/EbbyJoy.png",
-    'poneh ebby concerned':"images/sprites/poneh/EBOLA/EbbyConcerned.png",
-    'poneh ebby excited':"images/sprites/poneh/EBOLA/EbbyExcited.png",
-    'poneh ebby sad':"images/sprites/poneh/EBOLA/EbbyConcerned.png",
-    'poneh ebby rape':"images/sprites/poneh/EBOLA/EbbyRape.png",
-    'poneh ebby joy':"images/sprites/poneh/EBOLA/EbbyJoy.png",
-    }, wimg=700, himg=1100, 
-    lcrop=800, scrop=800,
-    lscale=1.0, sscale=1.0)
 #Sars default
     autoComposite(
     bases={'point':""},
@@ -278,24 +245,12 @@ init python:
     'default sars grin':"images/sprites/SARS/SarsGrin.png",
     'default sars sad':"images/sprites/SARS/SarsSad.png",
     'default sars stars':"images/sprites/SARS/SarsStars.png",
+    'default sars angry':"images/sprites/SARS/SarsNotAmused.png",
+    'default sars blush':"images/sprites/SARS/SarsNotAmused.png",
     }, wimg=525, himg=600, 
-    lcrop=600, scrop=600,
-    lscale=1.5, sscale=1.5)
-#Sars dread
-    autoComposite('dread sars normal', base="images/sprites/dread/SARS/SarsNormal.png",
-    bases={
-    'point':"images/sprites/dread/SARS/SarsPoint.png"
-    },
-    dict={
-    'dread sars notamused':"",
-    'dread sars concerned':"images/sprites/dread/SARS/SarsConcerned.png",
-    'dread sars grin':"images/sprites/dread/SARS/SarsGrin.png",
-    'dread sars sad':"images/sprites/dread/SARS/SarsSad.png",
-    'dread sars stars':"images/sprites/dread/SARS/SarsStars.png",
-    }, wimg=751, himg=1790, 
-    xcomp=241, ycomp=129, wcomp=307, hcomp=284,
-    lcrop=984, scrop=1200,
-    sscale=0.64)
+    lcrop=500, scrop=600,
+    lscale=3.0, sscale=1.5)
+init -11 python:
 #Ebby Switch
     artstyle_switcher([
     'ebby normal',
@@ -313,10 +268,12 @@ init python:
     artstyle_switcher([
     'sars normal',
     'sars notamused',
-    'ebby concerned',
-    'ebby grin',
-    'ebby sad',
-    'ebby stars',
+    'sars concerned',
+    'sars grin',
+    'sars sad',
+    'sars stars',
+    'sars angry',
+    'sars blush',
     ],['point'])
 init:
 
@@ -434,7 +391,10 @@ init:
     # The narrator is used when no speaker is provided.
     define narrator = Character('', what_color="#dddddd", what_prefix='', what_suffix='')
     define centered = Character('', kind=narrator, what_style="centered_text", window_style="centered_window", ctc=None)
-
+    
+    # This is for placeholder text. No placeholder text should remain in the final release.
+    define plh = Character('', kind=narrator, what_color="#55aa55", what_prefix='# ', what_suffix='')
+    
     define prin = Character('', kind=narrator) #deprecated. Please use narrator instead
     define nn = Character('', kind=narrator) #deprecated. Please use narrator instead
     
